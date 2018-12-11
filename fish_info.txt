@@ -1,0 +1,57 @@
+NAME:  fishcatch							
+TYPE:  Sample 							
+SIZE:  159 observations, 8 variables							
+							
+DESCRIPTIVE ABSTRACT:							
+							
+159 fishes of 7 species are caught and measured. Altogether there are							
+8 variables.  All the fishes are caught from the same lake							
+(Laengelmavesi) near Tampere in Finland.							
+							
+SOURCES:							
+Brofeldt, Pekka: Bidrag till kaennedom on fiskbestondet i vaera							
+        sjoear. Laengelmaevesi. T.H.Jaervi: Finlands Fiskeriet  Band 4,							
+        Meddelanden utgivna av fiskerifoereningen i Finland.							
+        Helsingfors 1917							
+							
+VARIABLE DESCRIPTIONS:							
+							
+1  Obs       Observation number ranges from 1 to 159							
+2  Species   (Numeric)							
+        Code Finnish  Swedish    English        Latin      					
+         1   Lahna    Braxen     Bronze Bream   Abramis brama		
+         2   Siika    Iiden      Ide      	Leuciscus idus		
+         3   Sarki   Moerten    Roach          Rutilus rutilus		
+         4   Parkki   Bjoerknan  Silver bream   Abramis bjrkna		
+         5   Norssi   Norssen    Smelt          Osmerus eperlanus	
+         6   Hauki    Jaedda     Pike           Esox lucius		
+         7   Ahven    Abborre    Perch          Perca fluviatilis
+							
+3  Weight      Weight of the fish (in grams)							
+4  Length1     Length from the nose to the beginning of the tail (in cm)							
+5  Length2     Length from the nose to the notch of the tail (in cm)							
+6  Length3     Length from the nose to the end of the tail (in cm)							
+7  Height%     Maximal height as % of Length3							
+8  Width%      Maximal width as % of Length3						
+9  Sex         1 = male, 0 = female
+							
+							
+          ___/////___                  _							
+         /           \    ___          |							
+       /\             \_ /  /          H							
+     <   )            __)  \           |							
+       \/_\\_________/   \__\          _							
+							
+     |------- L1 -------|							
+     |------- L2 ----------|							
+     |------- L3 ------------|							
+							
+							
+Values are aligned and delimited by tabs.							
+Missing values are denoted with NA.							
+There is one data line for each case.							
+
+SPECIAL NOTES:			
+I have usually calculated			
+	Height =  Height%*Length3/100
+        Widht  =  Widht%*Length3/100

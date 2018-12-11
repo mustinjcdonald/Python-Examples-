@@ -1,0 +1,28 @@
+taco
+1.49
+.53
+food
+soda-medium
+2.19
+0.22
+drink
+soda-large
+3.29
+0.31
+drink
+soda-small
+1.79
+0.19
+drink
+chili
+3.89
+1.41
+food
+hot dog
+2.29
+1.02
+food
+french fries
+2.49
+0.68
+side order

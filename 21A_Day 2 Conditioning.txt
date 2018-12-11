@@ -1,0 +1,78 @@
+- Insert a new code cell above the markdown cell that says "Example: Taiwan survey data, part 2."
+- Copy the text between the asterisks into the new cell.
+
+************************************************
+## Day 2
+# Restart work on Taiwan data dataframe
+import numpy as np
+import pandas as pd
+
+# read data into memory
+df = pd.read_excel("Taiwan_CellSurvey_RAW.xlsx", index_column="SurveyID")
+
+# remove duplicates and save to df2
+df2 = df.drop_duplicates()
+
+# verify df looks the way we expect
+df2.head()
+****************************************************
+CODE FOR THE END OF THE NOTEBOOK BEGINNING WITH "Finding missing values" BEGINS BELOW THIS POINT
+WE WILL DISCUSS HOW WE WILL GET IT INTO THE NOTEBOOK
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+### Finding missing values
+To find missing values we look for null values. If we use the `isnull()` method, we get a table of True or False answers to the question "does this cell contain a null value?" It would be more useful to check individual fields for nulls since we know many of the fields will have null values by design.
+
+# Example: finding null values
+
+
+### Handling missingness
+We've already seen the `NaN` value in some of the views of our dataset. That is the pandas default way of representing a missing (or null) value. The Python default is `None`. Some people like to use a value that is valid but couldn't be mistaken for an actual data point, like `-999`. In any case, a consistent scheme for encoding missingness should be adopted to avoid potential problems.
+
+Once we know there are missing values in our data and we have them coded consistently, we have to decide what to do about them. There are three possibilities:
+1. ignore the missing data
+2. drop the rows with missing data from the dataset
+3. fill in the missing data points
+
+Ignoring the problem (as with most problems) may lead to unanticipated consequences for your analysis, so we seldom do that. We can use the `dropna()` method to remove the rows with missing data from the dataframe, but that also can be a problem. Most of the time we will fill in the missing data.
+
+Discussions of all the statistical tools available to replace null values in our data is well beyond the scope of our class. However, one simple method (that might be appropriate in a simple dataset) is to replace missing values with the mean of the other values. Obviously this only works for numeric fields, but the median and mode can be used in both numeric and text fields.
+
+# Example: display the mean, median, and mode for the Age column
+
+# Example: replace missing values with mean, median or mode
+
+# Example: look at the data frame header to see the table itself hasn't changed.
+# Need to add the inplace option to change the underlying data.
+
+# Example: replace missing values inplace with our choice of mean, median or mode
+# Which version of fill_values shall we use?
+
+## Feature creation
+We've already seen that sometimes the original data isn't in the form that helps us best conduct the analysis we want. That can include some the issues we've seen so far like numeric variables that need to be categorical or it could be that the variable we really want has to be created from some of the data. The variables (i.e., columns) we use for our analysis are often referred to as _features_. 
+
+The features that might need to be created will depend upon the data at hand and the analysis goals, but there are some general kinds of operations you might need to do to create the features you need. They include situations like these:
+- Daily date data is available but you really need to extract year values or to indicate the quarter.
+- Continuous numeric data like income or sales might benefit from _binning_, which is a conversion of continuous data into categories (or bins).
+- The raw data contains the components of the feature you need. For example, you may have dividend per share and earnings per share data for stocks and you need the dividend payout ratio for the analysis.
+
+This last example is one we will work on further. First, let's review what the df2 DataFrame currently looks like.
+
+# Example: add new calculated column
+# Review columns available
+
+We know from a description of our data that PA1, PA2, and PA3 are all indicators of a construct we are studying. We also know that we want to combine them into one measure called 'perceived anxiety' for further analysis. One way we can do that is by creating a new column containing the average of the component values. We can do it using either the `average()` method built-in to NumPy or we can manually code the calculation.
+
+Of course the creation of a new feature may involve more (or less) complex calculations than just an average. Use whatever methods are appropriate to the situation.
+
+# Example: create PAnxiety from PA1, PA2, and PA3
+# Do it with built-in function
+# The axis=0 argument says to average on each row
+
+# Do it manually
+
+# Verify the addition of the new column
+
+We should verify some of the values to make sure our calculation worked as expected. To make that a little easier we can  print just the columns of interest.
+
+# Example: verifying calculation of PAnxiety
